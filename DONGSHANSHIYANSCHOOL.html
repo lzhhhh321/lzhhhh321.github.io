@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻网站</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* 整体页面布局 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 页面头部样式，让LOGO和导航栏水平排列 */
+    header {
+      display: flex;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    /* LOGO样式 */
+  .logo {
+      width: 150px;
+      height: auto;
+      margin-right: 20px;
+    }
+
+    /* 导航栏样式 */
+    nav {
+      flex-grow: 1;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    nav ul li {
+      cursor: pointer;
+    }
+
+    /* 新闻列表样式 */
+  .news-list {
+      padding: 20px;
+    }
+
+  .news-item {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+  .news-item h3 {
+      margin-top: 0;
+    }
+
+  .news-item p {
+      color: #666;
+    }
+
+
+    .carousel {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 轮播图图片样式 */
+ .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    /* 轮播图小圆点样式（用于指示当前图片位置） */
+ .carousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+    }
+
+ .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+ .carousel-dot.active {
+      background-color: #333;
+    }
+
+    /* 页面底部备案信息样式 */
+ .footer {
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+  </style>
+</head>
+
+<body>
+  <!-- 页面头部包含LOGO和导航栏 -->
+  <header>
+    <img src="C:\Users\Administrator\Downloads\微信图片_2024-12-26_210225_896-removebg-preview (2).jpg" alt="网站LOGO" class="logo">
+    <nav>
+      <ul>
+        <li>东山县实验小学官网</li>
+
+      </ul>
+    </nav>
+  </header>
+
+<!-- 轮播图部分 -->
+<div class="carousel">
+    <img src="C:\Users\Administrator\Pictures\微信图片_2024-12-26_212504_373.png" alt="轮播图1" class="carousel-image active">
+    <img src="C:\Users\Administrator\Pictures\微信图片_2024-12-26_212504_373.png" alt="轮播图2" class="carousel-image">
+    <img src="C:\Users\Administrator\Pictures\微信图片_2024-12-26_212504_373.png" alt="轮播图3" class="carousel-image">
+    <div class="carousel-dots">
+      <span class="carousel-dot active"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+    </div>
+  </div>
+
+<!-- 悬浮窗 -->
+<div class="floating-window">
+  <div class="toggle-arrow" id="toggleArrow"></div>
+  <div class="window-content" id="windowContent">
+    <p>本网站更新中，有BUG是正常的，如果你发现可以反馈给:teamlz@126.com</p>
+  </div>
+</div>
+
+
+  <!-- 新闻列表 -->
+  <div class="news-list">
+    <div class="news-item">
+      <h3><a href="wenzhang.html">“食”光邀约，“味”爱而来——东山县实验小学附属幼儿园</a></h3>
+      <p>11月18日，我园举行 “校园食品开放日”，家长们得以亲身体验学校食堂的规范管理与贴心服务。</p>
+    </div>
+    <div class="news-item">
+      <h3><a href="news2.html">重大新闻标题 2</a></h3>
+      <p>新闻 2 的简要介绍，说明事件的核心要点和其重要性。</p>
+    </div>
+    <div class="news-item">
+      <h3><a href="news3.html">重大新闻标题 3</a></h3>
+      <p>这里是新闻 3 的简短描述，让读者快速了解事件概况。</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+
+<div class="footer">
+    <p>                   版权所有 &copy; [东山县实验小学官网 DONGSHANSHIYANSCHOOL]，当前网站由学生制作，所有新闻都来自微信公众号，如校方觉得有侵权，请联系:teamlz@126.com，我们将在1个工作日内删除所有资料！</p>
+  </div>
+
+  <script>
+    const carouselImages = document.querySelectorAll('.carousel-image');
+    const carouselDots = document.querySelectorAll('.carousel-dot');
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      carouselImages.forEach((img, i) => {
+        img.style.opacity = i === index? 1 : 0;
+      });
+      carouselDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % carouselImages.length;
+      showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+      showSlide(currentIndex);
+    }
+
+    // 初始化显示第一张图片
+    showSlide(currentIndex);
+
+    // 自动轮播，每隔3秒切换下一张图片（可根据需求调整时间间隔）
+    setInterval(nextSlide, 3000);
+
+    // 为小圆点添加点击事件，点击切换到对应图片
+    carouselDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+      });
+    });
+    
+  </script>
+</body>
+
+</html>
+</html>
